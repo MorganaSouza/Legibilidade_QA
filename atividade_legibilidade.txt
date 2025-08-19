@@ -1,0 +1,190 @@
+Atividade de Qualidade de Software: Legibilidade dos Códigos
+Nome: Morgana Souza
+Turma: TADHS036
+Professor: Thiago
+
+1. Nomes ruins,
+  Código ruim:
+
+def f(x, y):
+    return x * y
+
+a = f(5, 10)
+print(a)
+
+Código corrigido:
+
+def calcular_area_retangulo(base, altura):
+    return base * altura
+
+area = calcular_area_retangulo(5, 10)
+print(area)
+
+
+2. Números mágicos, Código Ruim:
+
+salario = 2000
+bonus = salario * 0.15
+print(bonus)
+
+Código corrigido:
+
+PERCENTUAL_BONUS = 0.15
+
+salario = 2000
+bonus = salario * PERCENTUAL_BONUS
+print(bonus)
+
+
+3. Função longa, Código Ruim:
+
+def processar():
+    nome = input("Digite o nome: ")
+    idade = int(input("Digite a idade: "))
+    if idade >= 18:
+        print(f"{nome} é maior de idade")
+    else:
+        print(f"{nome} é menor de idade")
+
+Código corrigido:
+
+def ler_dados():
+    nome = input("Digite o nome: ")
+    idade = int(input("Digite a idade: "))
+    return nome, idade
+
+def verificar_maioridade(nome, idade):
+    return f"{nome} é maior de idade" if idade >= 18 else f"{nome} é menor de idade"
+
+def processar():
+    nome, idade = ler_dados()
+    print(verificar_maioridade(nome, idade))
+
+4. Aninhamento profundo, Código Ruim:
+
+def verifica(x):
+    if x > 0:
+        if x < 10:
+            return "Entre 1 e 9"
+        else:
+            return "Maior ou igual a 10"
+    else:
+        return "Menor ou igual a 0"
+
+Código corrigido:
+
+def verifica(x):
+    if x <= 0:
+        return "Menor ou igual a 0"
+    if x < 10:
+        return "Entre 1 e 9"
+    return "Maior ou igual a 10"
+
+
+5. Comentário desatualizado ou redundante, Código Ruim:
+
+# Soma dois números
+def soma(a, b):
+    return a + b  # aqui soma
+
+Código corrigido:
+
+def soma(a: int, b: int) -> int:
+    """Retorna a soma de dois números inteiros."""
+    return a + b
+
+
+6. Expressões booleanas opacas, Código Ruim:
+
+idade = 20
+tem_carteira = True
+na_lista_negra = False
+
+# expressão opaca: difícil entender rápido
+if idade >= 18 and tem_carteira and not na_lista_negra:
+    print("Pode alugar o carro")
+else:
+    print("Não pode alugar o carro")
+
+
+Código corrigido:
+
+idade = 20
+tem_carteira = True
+na_lista_negra = False
+
+# condições nomeadas com variáveis claras
+maior_de_idade = idade >= 18
+possui_carteira = tem_carteira
+aprovado = not na_lista_negra
+
+if maior_de_idade and possui_carteira and aprovado:
+    print("Pode alugar o carro")
+else:
+    print("Não pode alugar o carro")
+
+
+7. Responsabilidades misturadas, Código Ruim:
+
+def salvar_usuario():
+    nome = input("Digite o nome: ")
+    with open("usuarios.txt", "a") as f:
+        f.write(nome + "\n")
+    print("Usuário salvo com sucesso!")
+
+Código corrigido:
+
+def ler_usuario():
+    return input("Digite o nome: ")
+
+def salvar_em_arquivo(nome, arquivo="usuarios.txt"):
+    with open(arquivo, "a") as f:
+        f.write(nome + "\n")
+
+def salvar_usuario():
+    nome = ler_usuario()
+    salvar_em_arquivo(nome)
+    print("Usuário salvo com sucesso!")
+
+
+8. Repetição de lógica, Código Ruim:
+
+print("Preço com desconto:", 100 - (100 * 0.1))
+print("Preço com desconto:", 200 - (200 * 0.1))
+print("Preço com desconto:", 300 - (300 * 0.1))
+
+Código corrigido:
+
+def aplicar_desconto(preco, percentual=0.1):
+    return preco - (preco * percentual)
+
+for preco in [100, 200, 300]:
+    print("Preço com desconto:", aplicar_desconto(preco))
+
+
+9. Uso indevido de abreviações, Código Ruim:
+
+qt = 10
+vlr = 5
+tt = qt * vlr
+print(tt)
+
+Código corrigido:
+
+quantidade = 10
+valor_unitario = 5
+total = quantidade * valor_unitario
+print(total)
+
+
+10. Imports não usados, Código Ruim:
+
+import math
+import random
+import os
+
+print("Hello World")
+
+Código corrigido:
+
+print("Hello World")

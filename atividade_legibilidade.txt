@@ -5,6 +5,7 @@ Professor: Thiago
 
 1. Nomes ruins,
   Código ruim:
+  
 
 def f(x, y):
     return x * y
@@ -13,6 +14,7 @@ a = f(5, 10)
 print(a)
 
 Código corrigido:
+O que estava ruim: função f e variáveis x, y, a não dizem nada.
 
 def calcular_area_retangulo(base, altura):
     return base * altura
@@ -28,6 +30,7 @@ bonus = salario * 0.15
 print(bonus)
 
 Código corrigido:
+0.15 solto no código; difícil saber o que significa.
 
 PERCENTUAL_BONUS = 0.15
 
@@ -47,6 +50,7 @@ def processar():
         print(f"{nome} é menor de idade")
 
 Código corrigido:
+O que estava ruim: entrada, regra e saída misturadas numa função só.
 
 def ler_dados():
     nome = input("Digite o nome: ")
@@ -72,6 +76,7 @@ def verifica(x):
         return "Menor ou igual a 0"
 
 Código corrigido:
+O que estava ruim: vários if dentro de if, difícil de ler.
 
 def verifica(x):
     if x <= 0:
@@ -88,6 +93,7 @@ def soma(a, b):
     return a + b  # aqui soma
 
 Código corrigido:
+O que estava ruim: comentário óbvio; se mudar a função, o comentário fica falso.
 
 def soma(a: int, b: int) -> int:
     """Retorna a soma de dois números inteiros."""
@@ -108,6 +114,11 @@ else:
 
 
 Código corrigido:
+
+O que estava ruim:
+A condição inteira (idade >= 18 and tem_carteira and not na_lista_negra) estava inline, difícil de ler rápido.
+O leitor precisa interpretar cada pedacinho mentalmente.
+Não há nomes claros, então a regra de negócio não “fala por si”.
 
 idade = 20
 tem_carteira = True
@@ -133,6 +144,8 @@ def salvar_usuario():
     print("Usuário salvo com sucesso!")
 
 Código corrigido:
+O que estava ruim: função fazia input, escrita em arquivo e mensagem — tudo junto.
+
 
 def ler_usuario():
     return input("Digite o nome: ")
@@ -154,6 +167,7 @@ print("Preço com desconto:", 200 - (200 * 0.1))
 print("Preço com desconto:", 300 - (300 * 0.1))
 
 Código corrigido:
+O que estava ruim: mesma conta repetida várias vezes para descontos diferentes.
 
 def aplicar_desconto(preco, percentual=0.1):
     return preco - (preco * percentual)
@@ -170,6 +184,8 @@ tt = qt * vlr
 print(tt)
 
 Código corrigido:
+O que estava ruim: qt, vlr, tt não comunicam nada.
+
 
 quantidade = 10
 valor_unitario = 5
@@ -186,5 +202,6 @@ import os
 print("Hello World")
 
 Código corrigido:
+O que estava ruim: vários import sem uso poluem e confundem.
 
 print("Hello World")
